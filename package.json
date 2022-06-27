@@ -14,12 +14,33 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "gatsby": "^4.16.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "@emotion/core": "^11.0.0",
+    "@emotion/styled": "^11.9.3",
+    "@fontsource/zen-old-mincho": "^4.5.11",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "gatsby": "^4.17.0",
+    "gatsby-plugin-emotion": "^7.17.0",
+    "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-image": "^2.17.0",
+    "gatsby-plugin-sharp": "^4.17.0",
+    "gatsby-plugin-smoothscroll": "^1.2.0",
+    "gatsby-remark-autolink-headers": "^5.17.0",
+    "gatsby-remark-line-breaks": "^1.0.0",
+    "gatsby-remark-table-of-contents": "^2.0.0",
+    "gatsby-source-filesystem": "^4.17.0",
+    "gatsby-source-strapi": "^2.0.0",
+    "gatsby-transformer-remark": "^5.17.0",
+    "gatsby-transformer-sharp": "^4.17.0",
+    "react": "^18.2.0",
+    "react-anchor-link-smooth-scroll": "^1.0.12",
+    "react-dom": "^18.2.0",
+    "twin.macro": "^2.8.2"
   },
   "devDependencies": {
-    "prettier": "^2.6.2"
+    "prettier": "^2.7.1"
   },
   "repository": {
     "type": "git",
@@ -27,5 +48,13 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "babelMacros": {
+    "twin": {
+      "config": "./tailwind.config.js",
+      "preset": "emotion",
+      "hasSuggestions": true,
+      "debug": false
+    }
   }
 }
