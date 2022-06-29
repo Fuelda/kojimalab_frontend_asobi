@@ -1,5 +1,6 @@
 import React from "react"
 import tw from "twin.macro"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const ReportInfo = ({ post }) => {
   const {
@@ -12,9 +13,7 @@ const ReportInfo = ({ post }) => {
     mainFigure,
     publishedYear,
   } = post
-
-  const mainFigureUrl = mainFigure ? mainFigure.localFile.url : ""
-  const mainFigureText = mainFigure ? mainFigure.alternatvieText : ""
+  const mainImg = mainFigure ? getImage(mainFigure.localFile) : ""
 
   return (
     <div tw="flex mt-5 md:flex-col">
@@ -46,7 +45,7 @@ const ReportInfo = ({ post }) => {
         </div>
       </div>
       <div css={mainFigure ? tw`w-1/2` : tw`w-0`} tw="md:w-full md:mt-2">
-        <img src={mainFigureUrl} alt={mainFigureText} />
+        <GatsbyImage image={mainImg} alt={titleEN} />
       </div>
     </div>
   )

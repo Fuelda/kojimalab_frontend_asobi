@@ -30,5 +30,8 @@ module.exports = {
         plugins: [`gatsby-remark-line-breaks`],
       },
     },
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`, // Needed for dynamic images
   ],
 }

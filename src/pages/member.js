@@ -87,7 +87,9 @@ export const query = graphql`
           nameJP
           photo {
             localFile {
-              url
+              childImageSharp {
+                gatsbyImageData
+              }
             }
             alternativeText
           }
@@ -105,7 +107,9 @@ export const query = graphql`
         node {
           image {
             localFile {
-              url
+              childImageSharp {
+                gatsbyImageData
+              }
             }
             alternativeText
           }

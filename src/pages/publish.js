@@ -60,7 +60,9 @@ export const query = graphql`
           strapi_id
           mainFigure {
             localFile {
-              url
+              childImageSharp {
+                gatsbyImageData
+              }
             }
             alternativeText
           }
