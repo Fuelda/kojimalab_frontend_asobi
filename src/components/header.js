@@ -39,7 +39,7 @@ const Header = () => {
         transform: scale(1, 1);
       }
     }
-    ${tw`md:text-3xl`}
+    ${tw`md:text-2xl`}
   `
 
   return (
@@ -85,10 +85,10 @@ const Header = () => {
           ></HamLine>
         </button>
         <nav
-          tw="z-10 md:(text-center bg-gray-700 w-screen h-screen pt-40 fixed top-0 duration-500 text-white )"
+          tw="z-10 md:(text-center bg-gray-700 w-screen h-screen pt-20 fixed top-0 duration-500 text-white )"
           css={openMenu ? tw`right-0` : tw`-right-full`}
         >
-          <ul tw="flex md:(flex-col gap-14 )">
+          <ul tw="flex md:(flex-col gap-11 )">
             <List
               css={location === "/" ? tw`bg-bgYello text-black` : tw`bg-none`}
             >
