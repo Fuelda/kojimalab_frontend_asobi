@@ -1,12 +1,13 @@
 import React, { useState } from "react"
-import tw from "twin.macro"
+import tw, { css } from "twin.macro"
 import { Link } from "gatsby"
 import { useLocation } from "@reach/router"
 // import { StaticImage } from "gatsby-plugin-image"
 import { GlobalStyles } from "twin.macro"
 
-const List = tw.li`text-base hover:bg-bgYello`
+const List = tw.li`text-base `
 const HamLine = tw.div`w-10 h-1 bg-gray-700 rounded-md md:duration-500`
+// const Marker = tw.div`bg-bgYello h-full w-full`
 
 const Header = () => {
   const location = useLocation().pathname
@@ -15,6 +16,31 @@ const Header = () => {
   const moveOpenMenu = () => {
     setOpenMenu(!openMenu)
   }
+
+  const hoverMarker = css`
+    ${tw`px-3`}
+    display: block;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #e0ff00;
+      z-index: -1;
+      transform: scale(0, 1);
+      transition-duration: 0.3s;
+      transform-origin: left;
+    }
+    &:hover {
+      &::before {
+        transform: scale(1, 1);
+      }
+    }
+    ${tw`md:text-3xl`}
+  `
 
   return (
     <header>
@@ -37,7 +63,7 @@ const Header = () => {
           </div>
         </Link>
         <button
-          tw="hidden w-9 h-9  fixed top-5 right-5 z-10 md:flex flex-col justify-between"
+          tw="hidden w-9 h-9  fixed top-5 right-5 z-20 md:flex flex-col justify-between"
           onClick={moveOpenMenu}
         >
           <HamLine
@@ -59,14 +85,14 @@ const Header = () => {
           ></HamLine>
         </button>
         <nav
-          tw=" md:text-center md:bg-gray-700 md:w-screen md:pt-20 md:pb-3 md:fixed md:top-0 md:duration-500 md:text-white"
+          tw="z-10 md:(text-center bg-gray-700 w-screen h-screen pt-40 fixed top-0 duration-500 text-white )"
           css={openMenu ? tw`right-0` : tw`-right-full`}
         >
-          <ul tw="flex md:flex-col md:gap-3">
+          <ul tw="flex md:(flex-col gap-14 )">
             <List
               css={location === "/" ? tw`bg-bgYello text-black` : tw`bg-none`}
             >
-              <Link to="/" tw="px-3 block">
+              <Link to="/" css={hoverMarker}>
                 ホーム
               </Link>
             </List>
@@ -77,7 +103,7 @@ const Header = () => {
                   : tw`bg-none`
               }
             >
-              <Link to="/project" tw="px-3 block">
+              <Link to="/project" css={hoverMarker}>
                 研究内容
               </Link>
             </List>
@@ -88,7 +114,7 @@ const Header = () => {
                   : tw`bg-none`
               }
             >
-              <Link to="/publish" tw="px-3 block">
+              <Link to="/publish" css={hoverMarker}>
                 研究業績
               </Link>
             </List>
@@ -97,7 +123,7 @@ const Header = () => {
                 location === "/member" ? tw`bg-bgYello text-black` : tw`bg-none`
               }
             >
-              <Link to="/member" tw="px-3 block">
+              <Link to="/member" css={hoverMarker}>
                 メンバー
               </Link>
             </List>
@@ -106,7 +132,7 @@ const Header = () => {
                 location === "/access" ? tw`bg-bgYello text-black` : tw`bg-none`
               }
             >
-              <Link to="/access" tw="px-3 block">
+              <Link to="/access" css={hoverMarker}>
                 アクセス
               </Link>
             </List>

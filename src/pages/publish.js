@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import ReportInfo from "../components/reportInfo"
-import tw from "twin.macro"
+import tw, { css } from "twin.macro"
 import { GlobalStyles } from "twin.macro"
 import { graphql } from "gatsby"
 import AnchorLink from "react-anchor-link-smooth-scroll"
@@ -14,6 +14,29 @@ export default function Home({ data }) {
   )
   const yearArrayNew = Array.from(new Set(yearArray))
 
+  const hoverMarker = css`
+    display: block;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #e0ff00;
+      z-index: -1;
+      transform: scale(0, 1);
+      transition-duration: 0.3s;
+      transform-origin: left;
+    }
+    &:hover {
+      &::before {
+        transform: scale(1, 1);
+      }
+    }
+  `
+
   return (
     <Layout>
       <GlobalStyles />
@@ -23,10 +46,14 @@ export default function Home({ data }) {
           <aside tw="mt-5 w-2/12 md:hidden">
             <div tw="sticky top-10">
               <div>Published in...</div>
-              <ul tw="mt-4 pl-5">
+              <ul tw="mt-4 pl-5 pr-5">
                 {yearArrayNew.map(year => (
                   <li>
-                    <AnchorLink href={"#anchor" + year} tw="hover:bg-bgYello">
+                    <AnchorLink
+                      href={"#anchor" + year}
+                      tw="px-4"
+                      css={hoverMarker}
+                    >
                       {year}年
                     </AnchorLink>
                   </li>
